@@ -28,9 +28,9 @@ class _MyPageState extends State<MyPage> {
 
     if (pickedFile != null) {
        var selected = File(pickedFile.path);
-      //  setState(() {
-      //    imageFile = selected;
-      //  });
+       setState(() {
+         imageFile = selected;
+       });
       // imageFile = pickedFile.path as File;
     } else {
       Get.snackbar("Atenção",
@@ -40,7 +40,7 @@ class _MyPageState extends State<MyPage> {
       var f = await pickedFile.readAsBytes();
       setState(() {
         webImagem =  f;
-         imageFile =  File('a');
+        imageFile =  File('a');
       });
     }
   }
@@ -55,8 +55,8 @@ class _MyPageState extends State<MyPage> {
     // ignore: deprecated_member_use
     XFile? pickedFile = await ImagePicker().getImage(
       source: ImageSource.gallery,
-      // maxWidth: 1800,
-      // maxHeight: 1800,
+      maxWidth: 1280,
+      maxHeight: 220,
     ) as XFile;
     _cropImage(File(pickedFile.path));
 
@@ -108,6 +108,7 @@ class _MyPageState extends State<MyPage> {
         )
       ]
     )) as File;
+    
     // if (croppedImage != null) {
     //   imageFile = croppedImage;
     //   setState(() {});
@@ -155,12 +156,27 @@ class _MyPageState extends State<MyPage> {
                   ],
                   
                 ),
+
+                imageFile == null ?
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: [
+                            const Text("Faça upload de uma imagem...", style: TextStyle(fontSize: 30, color: Colors.black),
+                          ),
+                        ],
+                      ),
+                ) : const Padding(
+                  padding: EdgeInsets.all(20.0),
+                  child:  Text("Imagem carregada", style: TextStyle(fontSize: 30, color: Colors.black)),
+                ),
         
-                imageFile == null ? Container(
-                  // ignore: prefer_const_constructors
-                  child: Padding(
-                    padding: const EdgeInsets.all(50.0),
-                    child: const Text("Faça upload de uma imagem", style: TextStyle(fontSize: 30, color: Colors.black)),
+                imageFile == null ? Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Container(
+                    alignment: Alignment.topCenter,
+                    child: Image.asset('img/sem_foto.png', fit: BoxFit.cover),
                   ),
                 ) : SizedBox(
                   width: sizeWidth * 1280,
