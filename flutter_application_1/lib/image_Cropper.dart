@@ -1,8 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -44,13 +42,13 @@ class _MyCropperState extends State<MyCropper> {
         await ImageCropper().cropImage(sourcePath: imagem.path, uiSettings: [
       WebUiSettings(
           context: context,
-          barrierColor: Colors.blueAccent,
+          barrierColor: Colors.black87,
           customClass: 'Cropper',
           enableOrientation: true,
           enableResize: false,
           enforceBoundary: true,
           presentStyle: CropperPresentStyle.dialog,
-          boundary: const CroppieBoundary(width: 1000, height: 220),
+          boundary: const CroppieBoundary(width: 1250, height: 220),
           viewPort: const CroppieViewPort(
               width: 1280, height: 220, type: "rectangle"),
           enableExif: true,
@@ -86,13 +84,12 @@ class _MyCropperState extends State<MyCropper> {
         uiSettings: [
           WebUiSettings(
             context: context,
-            customClass: 'Cropper',
-            barrierColor: Colors.transparent,
+            barrierColor: Colors.black87,
             enableOrientation: true,
             enableResize: false,
             enforceBoundary: true,
             presentStyle: CropperPresentStyle.dialog,
-            boundary: const CroppieBoundary(width: 650, height: 300),
+            boundary: const CroppieBoundary(width: 1250, height: 220),
             viewPort: const CroppieViewPort(
                 width: 1280, height: 220, type: "rectangle"),
             enableExif: true,
